@@ -123,14 +123,17 @@ counter.inc() // 11
 function motivation( firstname, lastname ) {
   var welcomeText = "You're doing awesome, keep it up";
 
-  // code message function here.
+  
+    function message(){
+      return `${ welcomeText } ${ firstname} ${lastname}.`
+    }
+    return message;
+  }
 
   //Uncommment this to return the value of your message function
-  //return message;
-}
 
-var greeting = motivation('Billy', 'Bob'); // 'You're doing awesome keep it up Billy Bob.
 
+var greeting = motivation('Billy', 'Bob');
 
 
 ////////// PROBLEM 6 //////////
@@ -154,10 +157,13 @@ var module = (function() {
   // Anything that is being returned is made public and can be invoked from
   // outside our lexical scope
   return {
-    // Code here.
+    publicMethod:function(){
+     return privateMethod();
+    }
   };
 })();
 
+module.publicMethod();
 
 
 ////////// PROBLEM 7 //////////
@@ -171,11 +177,33 @@ var module = (function() {
 
 function secretNumber() {
   var secret = 143;
-
+  //  let add = secret++;
+  //  let take = secret--;
   return {
-    // Code here
+    addToSecret:function(add){
+      secret += add
+      return secret;
+
+    },
+    takeAwayFromSecret:function(take){
+      secret -= take
+      return secret;
+    } 
   };
 }
+
+let newSecret = secretNumber()
+
+
+
+//console.log(newSecret)
+
+
+
+
+
+
+
 
 
 
@@ -198,12 +226,13 @@ function secretNumber() {
 */
 
 function timeOutCounter() {
-  for (var i = 0; i <= 5; i++) {
+  for (let i = 0; i <= 5; i++) {
     setTimeout(function() {
       console.log(i);
+      i++;
     }, i * 1000);
   }
 }
 
 
-//timeOutCounter();
+timeOutCounter();
