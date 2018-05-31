@@ -226,16 +226,16 @@ let newSecret = secretNumber()
 */
 
 function timeOutCounter() {
-  for (var i = 0; i <= 5; i++) {
+  for (let i = 0; i <= 5; i++) {
     setTimeout(function(o) {
       return function() {
         console.log(o);
-
       }
-      //i++;
     } (i), i * 1000);
   }
 }
+      
 
 
-timeOutCounter();
+
+//timeOutCounter();
